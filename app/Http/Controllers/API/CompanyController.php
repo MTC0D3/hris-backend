@@ -91,7 +91,7 @@ class CompanyController extends Controller
             // TODO: Get Company
             $company = Company::find($id);
 
-            // TODO: Check if company not exists
+            // TODO: Check if company exists
             if (!$company) {
                throw new Exception('Company not found');
             }
@@ -104,7 +104,7 @@ class CompanyController extends Controller
              // TODO: Update company
             $company->update([
                 'name' => $request->name,
-                'logo' => $path,
+                'logo' => isset($path) ? $path : $company->logo,
             ]);
 
             // TODO: Return response
